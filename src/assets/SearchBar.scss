@@ -1,9 +1,25 @@
 .ms_search_section{
-    text-align: center;
-    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: black;
     height: 50px;
     .ms_text_area{
-       background-color: blanchedalmond; 
+        width: 300px;
+        border-radius: 20px;
+        outline: none;
+        height: 30px;
+        border: 1px solid black;
+        padding: 5px;
+     }
+     .ms_search_button{
+        height: 30px;
+        width: 50px;
+        margin-left: 5px;
+        border-radius: 20px;
+        border: 1px solid black;
     }
 }
+
+
+
