@@ -1,0 +1,25 @@
+.container{
+    background-color: $mainColor;
+    height: calc(100vh - 50px);
+    width: 100vw;
+    color: white;
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+    ul{
+        list-style-type: none;
+    }
+}
+.ms_filmCard{
+    min-width: 300px;
+    border: 1px solid white;
+    margin: 5px;
+    margin-left: 100px;
+    text-align: center;
+}
+.ms_film_lang_img{
+    width: 20px;
+}
+.ms_film_poster{
+    max-width: 100%;
+}

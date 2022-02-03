@@ -1,12 +1,16 @@
 .ms_search_section{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     background-color: black;
     height: 50px;
+    .ms_boolflix_logo{
+        color: red;
+        font-size: 30px;
+    }
     .ms_text_area{
         width: 300px;
-        border-radius: 20px;
+        border-radius: 20px 0px 0px 20px;
         outline: none;
         height: 30px;
         border: 1px solid black;
@@ -15,9 +19,15 @@
      .ms_search_button{
         height: 30px;
         width: 50px;
-        margin-left: 5px;
-        border-radius: 20px;
+        border-radius: 0px 20px 20px 0px;
+        padding-right: 45px;
+        padding-left: 5px;
         border: 1px solid black;
+        opacity: 0.9;
+        &:hover{
+            cursor: pointer;
+            opacity: 1;
+        }
     }
 }
 

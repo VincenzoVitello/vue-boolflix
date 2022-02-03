@@ -1,8 +1,12 @@
 <template>
 <!-- creo div container della searchbar -->
   <div class="ms_search_section">
-      <input v-model="filmName" type="text" name="" id="" class="ms_text_area" placeholder="Cerca il titolo di un film">
-      <button @click="$emit('passedFilm', filmName)" class="ms_search_button">Cerca</button>
+      <div class="ms_boolflix_logo">BOOLFLIX</div>
+      <div>
+        <input v-model="filmName" type="text" name="" id="" class="ms_text_area" placeholder="Cerca il titolo di un film">
+        <button @click="$emit('passedFilm', filmName)"  class="ms_search_button">Cerca</button>
+      </div>
+     
   </div>
 </template>
 
