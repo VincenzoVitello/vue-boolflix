@@ -1,7 +1,7 @@
 <template>
   <div class="container">
       <ul v-for="(film, index) in sonPropsArray" :key="index" class="ms_filmCard">
-            <li><img :src="`https://image.tmdb.org/t/p/w500/` + film.poster_path" alt="" class="ms_film_poster"></li>
+            <li><img :src="`https://image.tmdb.org/t/p/w342/` + film.poster_path" alt="" class="ms_film_poster"></li>
             <li>{{film.title}}</li>
             <li>{{film.original_title}}</li>
             <li><img :src="getLangFlag(film.original_language)" class="ms_film_lang_img" alt=""> </li>
