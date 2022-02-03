@@ -1,7 +1,12 @@
 <template>
   <div id="app">
-    <SearchBar @passedFilm="getFilmCards" />
-    <Main :sonPropsArray="filmsArray"/>
+    <SearchBar @passedFilm="generateCards" />
+    <!-- <div v-if="productsArray.length == 0">
+      hey
+    </div> -->
+    <Main :filmsArray="filmsArray" :tvShowArray="tvShowArray" />
+    
+    
   </div>
 </template>
 
@@ -20,7 +25,11 @@ export default {
         return{
             apiUrlFilms: 'https://api.themoviedb.org/3/search/movie',
             apiUrlTvShow: 'https://api.themoviedb.org/3/search/tv',
-            filmsArray: [],
+            apiKey: 'fbb85452ee66bae138619692ec4e952d',
+            filmsArray:[],
+            tvShowArray:[],
+           
+            
         }
     },
     //metodi
@@ -29,7 +38,7 @@ export default {
             axios
             .get(this.apiUrlFilms, {
             params : {
-                api_key: 'fbb85452ee66bae138619692ec4e952d',
+                api_key: this.apiKey,
                 query: filmName,
 
                 }//chiusura axios.get params
@@ -38,9 +47,36 @@ export default {
             )//chiusura axios.get
             .then( (response) => {
                 this.filmsArray = response.data.results
-                console.log(response.data.results)   //SONO FERMO QUI E NON SO COSA SUCCEDE Né FACENDO COSì Né DOPO
+                   //SONO FERMO QUI E NON SO COSA SUCCEDE Né FACENDO COSì Né DOPO
             })
+        },
+        getTvShow: function(filmName){
+            axios
+            .get(this.apiUrlTvShow, {
+            params : {
+                api_key: this.apiKey,
+                query: filmName,
+
+                }//chiusura axios.get params
+            }//chiusura oggetto interno axios.get
+            
+            )//chiusura axios.get
+            .then( (response) => {
+                this.tvShowArray = response.data.results
+                console.log(this.tvShowArray)   //SONO FERMO QUI E NON SO COSA SUCCEDE Né FACENDO COSì Né DOPO
+            })
+            .catch(error  => {
+              console.log(error)
+            })
+            .finally(function() {
+              console.log('prova')
+            })
+        },
+        generateCards(filmName){
+          this.getFilmCards(filmName),
+          this.getTvShow(filmName)
         }
+          
     }//chiusura methods
 }
 </script>

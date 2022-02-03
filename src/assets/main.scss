@@ -13,13 +13,55 @@
     min-width: 300px;
     margin: 50px;
     text-align: center;
-    border: 1px solid white;
+   &:hover{
+       border: 2px solid white;
+       cursor: pointer;
+   }
+
+    .ms_film_name{
+        font-size: 25px;
+        margin: 5px 0;
+    }
 }
 .ms_film_lang_img{
     width: 20px;
 }
 .ms_film_poster{
     width: 100%;
-    max-height: 400px;
-    object-fit: cover;
+    max-height: 420px;
+    object-fit: contain;
+}
+.ms_loading{
+    height: calc(100vh - 50px);
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 40px;
+    &::after{
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        opacity: .9;
+        background-image: url('https://wallpaperaccess.com/full/3658597.jpg');
+        background-size: contain;
+    }
+    .ms_loading_content{
+        position: relative;
+        z-index: 999;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0,0,0,.7);
+    }
+    span{
+        font-size: 55px;
+        color: red;
+        text-transform: uppercase;
+    }
 }

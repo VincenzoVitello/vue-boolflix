@@ -1,12 +1,28 @@
 <template>
-  <div class="container">
-      <ul v-for="(film, index) in sonPropsArray" :key="index" class="ms_filmCard">
+  <div>
+      <div v-if="filmsArray.length == 0 && tvShowArray.length == 0" class="ms_loading">
+            <div class="ms_loading_content">
+                <p>Benvenuto su </p>
+                <p><span>BoolFlix</span></p> 
+                <p>cerca un film o una serie TV per iniziare</p>
+            </div>  
+      </div>
+      <div class="container" v-else>
+      <ul v-for="(film, index) in filmsArray" :key="index" class="ms_filmCard">
             <li><img :src="`https://image.tmdb.org/t/p/w342/` + film.poster_path" alt="" class="ms_film_poster"></li>
-            <li>{{film.title}}</li>
+            <li class="ms_film_name">{{film.title}}</li>
             <li>{{film.original_title}}</li>
             <li><img :src="getLangFlag(film.original_language)" class="ms_film_lang_img" alt=""> </li>
-            <li>{{film.vote_average}}</li>
+            <li>Voto degli utenti: {{film.vote_average}}</li> 
       </ul>
+      <ul v-for="(film, index) in tvShowArray" :key="index+'serie'" class="ms_filmCard serie">
+            <li><img :src="`https://image.tmdb.org/t/p/w342/` + film.poster_path" alt="" class="ms_film_poster"></li>
+            <li class="ms_film_name">{{film.title}}</li>
+            <li>{{film.original_title}}</li>
+            <li><img :src="getLangFlag(film.original_language)" class="ms_film_lang_img" alt=""> </li>
+            <li>Voto degli utenti: {{film.vote_average}}</li>
+      </ul>
+  </div>
   </div>
 </template>
 
@@ -15,7 +31,8 @@ export default {
     name: 'Main',
     //data
     props: {
-        sonPropsArray: Array,
+        filmsArray: Array,
+        tvShowArray: Array,
     },
     methods:{
         getLangFlag: function(filmLang){
