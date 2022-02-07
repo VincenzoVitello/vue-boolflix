@@ -38,7 +38,6 @@ export default {
             params : {
                 api_key: this.apiKey,
                 query: filmName,
-
                 }//chiusura params
             })//chiusura axios.get
             .then( (response) => {
@@ -52,10 +51,8 @@ export default {
             params : {
                 api_key: this.apiKey,
                 query: filmName,
-
                 }//chiusura params
             })//chiusura axios.get
-
             .then( (response) => {
                 this.tvShowArray = response.data.results
                 console.log(this.tvShowArray)   
