@@ -27,11 +27,9 @@ export default {
             apiUrlTvShow: 'https://api.themoviedb.org/3/search/tv',
             apiKey: 'fbb85452ee66bae138619692ec4e952d',
             filmsArray:[],
-            tvShowArray:[],
-           
-            
+            tvShowArray:[],    
         }
-    },
+    },//chiusura data
     //metodi
     methods:{
         getFilmCards: function(filmName){
@@ -41,15 +39,13 @@ export default {
                 api_key: this.apiKey,
                 query: filmName,
 
-                }//chiusura axios.get params
-            }//chiusura oggetto interno axios.get
-            
-            )//chiusura axios.get
+                }//chiusura params
+            })//chiusura axios.get
             .then( (response) => {
                 this.filmsArray = response.data.results
-                   //SONO FERMO QUI E NON SO COSA SUCCEDE Né FACENDO COSì Né DOPO
-            })
-        },
+                  
+            }) //chiusura axios .then
+        }, //chiusura getFilmCards
         getTvShow: function(filmName){
             axios
             .get(this.apiUrlTvShow, {
@@ -57,28 +53,27 @@ export default {
                 api_key: this.apiKey,
                 query: filmName,
 
-                }//chiusura axios.get params
-            }//chiusura oggetto interno axios.get
-            
-            )//chiusura axios.get
+                }//chiusura params
+            })//chiusura axios.get
+
             .then( (response) => {
                 this.tvShowArray = response.data.results
-                console.log(this.tvShowArray)   //SONO FERMO QUI E NON SO COSA SUCCEDE Né FACENDO COSì Né DOPO
-            })
+                console.log(this.tvShowArray)   
+            }) //chiusura .then
             .catch(error  => {
               console.log(error)
             })
             .finally(function() {
               console.log('prova')
             })
-        },
-        generateCards(filmName){
+        }, //chiusura funzione getTvShow
+        generateCards(filmName){ //funzione che richiama getFilmCards e getTvShow
           this.getFilmCards(filmName),
           this.getTvShow(filmName)
         }
           
     }//chiusura methods
-}
+} //chiusura export
 </script>
 
 <style lang="scss">

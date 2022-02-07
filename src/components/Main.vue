@@ -8,20 +8,43 @@
             </div>  
       </div>
       <div class="container" v-else>
-      <ul v-for="(film, index) in filmsArray" :key="index" class="ms_filmCard">
-            <li><img :src="`https://image.tmdb.org/t/p/w342/` + film.poster_path" alt="" class="ms_film_poster"></li>
-            <li class="ms_film_name">{{film.title}}</li>
-            <li>{{film.original_title}}</li>
-            <li><img :src="getLangFlag(film.original_language)" class="ms_film_lang_img" alt=""> </li>
-            <li>Voto degli utenti: {{film.vote_average}}</li> 
+        <h1>Film</h1>
+        <div class="filmSection">
+            <ul v-for="(film, index) in filmsArray" :key="index" class="ms_filmCard">
+            <li>
+                <img :src="`https://image.tmdb.org/t/p/w342/` + film.poster_path" alt="" class="ms_film_poster">
+            </li>
+            <div class="cardInfos">
+                <li class="ms_film_name">{{film.title}}</li>
+                <li>{{film.original_title}}</li>
+                <li><img :src="getLangFlag(film.original_language)" class="ms_film_lang_img" alt=""> </li> 
+                <li>
+                    <span v-for="(elem, index) in getStar(film.vote_average)" :key="index"><i class="fas fa-star ms_vote_stars"></i></span>
+                    <span v-for="(elem, index) in (5-getStar(film.vote_average))" :key="index+'films'"><i class="far fa-star ms_vote_stars"></i></span>
+                </li>
+                <li>{{film.overview}}</li>
+            </div>
       </ul>
-      <ul v-for="(film, index) in tvShowArray" :key="index+'serie'" class="ms_filmCard serie">
-            <li><img :src="`https://image.tmdb.org/t/p/w342/` + film.poster_path" alt="" class="ms_film_poster"></li>
-            <li class="ms_film_name">{{film.title}}</li>
-            <li>{{film.original_title}}</li>
-            <li><img :src="getLangFlag(film.original_language)" class="ms_film_lang_img" alt=""> </li>
-            <li>Voto degli utenti: {{film.vote_average}}</li>
+        </div>
+    <h1>TV Show</h1>
+      <div class="tvShowSection">
+          <ul v-for="(film, index) in tvShowArray" :key="index+'serie'" class="ms_filmCard serie">
+            <li>
+                <img :src="`https://image.tmdb.org/t/p/w342/` + film.poster_path" alt="" class="ms_film_poster">
+            </li>
+            <div class="cardInfos">
+                <li class="ms_film_name">{{film.name}}</li>
+                <li>{{film.original_name}}</li>
+                <li><img :src="getLangFlag(film.original_language)" class="ms_film_lang_img" alt=""> </li>
+                <li>
+                    <span v-for="(elem, index) in getStar(film.vote_average)" :key="index"><i class="fas fa-star ms_vote_stars"></i></span>
+                    <span v-for="(elem, index) in (5-getStar(film.vote_average))" :key="index+'films'"><i class="far fa-star ms_vote_stars"></i></span>
+                </li>
+                <li>{{film.overview}}</li>
+            </div>
       </ul>
+      </div>
+      
   </div>
   </div>
 </template>
@@ -44,6 +67,9 @@ export default {
             }
             return urlFlag
         },//chiusura funzione getFilmLang
+        getStar: function(voto){
+            return Math.ceil(voto/2);
+        },
     }//chiusura methods
 }//chiusura export
 </script>
@@ -51,5 +77,4 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/Vars.scss';
 @import '../assets/main.scss';
-
 </style>
